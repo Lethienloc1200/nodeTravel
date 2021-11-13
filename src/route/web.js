@@ -1,7 +1,9 @@
 import express from "express";
 import homeController from "../controllers/homeController";
 import userController from "../controllers/userController";
+import tourController from "../controllers/tourController";
 import doctorController from "../controllers/doctorController";
+
 let router = express.Router();
 
 let initWebRoutes = (app) => {
@@ -29,6 +31,15 @@ let initWebRoutes = (app) => {
     "/api/get-detail-doctor-by-id",
     doctorController.getDetailDoctorById
   );
+
+  router.get("/api/get-all-tours", tourController.handleGetAlltours);
+  router.post("/api/create-new-tour", tourController.handleCreateNewTour);
+  router.put("/api/edit-tour", tourController.handleEditTour);
+  router.delete("/api/delete-tour", tourController.handleDeleteTour);
+
+  router.get("/api/top-tour-home", tourController.getTopTourHome);
+  router.get("/api/get-detail-tour-by-id", tourController.getDetailTourById);
+  // router.get("/api/allcode", tourController.getAllCode);
 
   return app.use("/", router);
 };
