@@ -15,9 +15,6 @@ module.exports = {
       money: {
         type: Sequelize.STRING,
       },
-      description: {
-        type: Sequelize.STRING,
-      },
       way: {
         type: Sequelize.STRING,
       },
@@ -26,6 +23,18 @@ module.exports = {
       },
       hotel: {
         type: Sequelize.STRING,
+      },
+      contentHTML: {
+        allowNull: false,
+        type: Sequelize.TEXT("long"),
+      },
+      contentMarkdown: {
+        allowNull: false,
+        type: Sequelize.TEXT("long"),
+      },
+      description: {
+        allowNull: false,
+        type: Sequelize.TEXT("long"),
       },
 
       image: {

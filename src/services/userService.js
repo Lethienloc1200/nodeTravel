@@ -47,7 +47,7 @@ let handleUserLogin = (email, password) => {
         //return erro
         userData.errCode = 1;
         userData.errMessage =
-          "email khoong taoonf taij trong heej thoonsg, Please try another email";
+          "email không tồn tại trong hệ thống, Please try another email";
       }
       resolve(userData);
     } catch (e) {

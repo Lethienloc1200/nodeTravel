@@ -15,10 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     {
       place: DataTypes.STRING,
       money: DataTypes.STRING,
-      description: DataTypes.STRING,
+      description: DataTypes.TEXT("long"),
       way: DataTypes.STRING,
       vehicle: DataTypes.STRING,
       hotel: DataTypes.STRING,
+      contentHTML: DataTypes.TEXT,
+      contentMarkdown: DataTypes.TEXT("long"),
       image: DataTypes.BLOB("long"),
     },
     {

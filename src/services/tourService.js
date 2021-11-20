@@ -12,6 +12,8 @@ let createNewTour = (data) => {
         vehicle: data.vehicle,
         hotel: data.hotel,
         image: data.image,
+        contentHTML: data.contentHTML,
+        contentMarkdown: data.contentMarkdown,
       });
       resolve({
         errCode: 0,
@@ -84,6 +86,8 @@ let updateTourData = (data) => {
         tour.vehicle = data.vehicle;
         tour.money = data.money;
         tour.hotel = data.hotel;
+        tour.contentHTML = data.contentHTML;
+        tour.contentMarkdown = data.contentMarkdown;
 
         if (data.image) {
           tour.image = data.image;
