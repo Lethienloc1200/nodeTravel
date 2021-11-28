@@ -23,12 +23,18 @@ let initWebRoutes = (app) => {
   router.get("/api/get-detail-tour-by-id", tourController.getDetailTourById);
 
   router.get("/api/get-all-comments", commentController.handleGetAllComments);
-  router.post(
-    "/api/create-new-comment",
-    commentController.handleCreateNewComment
-  );
+  // router.post(
+  //   "/api/create-new-comment",
+  //   commentController.handleCreateNewComment
+  // );
 
   // router.get("/api/allcode", tourController.getAllCode);
+
+  router.post("/api/post-infor-comments", commentController.postInforComments);
+  router.get(
+    "/api/get-detail-comment-by-id",
+    commentController.getDetailCommentById
+  );
 
   return app.use("/", router);
 };

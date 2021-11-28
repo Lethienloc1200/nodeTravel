@@ -9,12 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Comment.belongsTo(models.Tour, { foreignKey: "commentId" });
     }
   }
   Comment.init(
     {
       description: DataTypes.TEXT("long"),
       star: DataTypes.INTEGER,
+      commentId: DataTypes.INTEGER,
     },
     {
       sequelize,

@@ -17,6 +17,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT("long"),
       },
+      commentId: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
 
       createdAt: {
         allowNull: false,
