@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Comment.belongsTo(models.User, { foreignKey: "userId" });
       Comment.belongsTo(models.Tour, { foreignKey: "commentId" });
     }
   }
@@ -17,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       description: DataTypes.TEXT("long"),
       star: DataTypes.INTEGER,
       commentId: DataTypes.INTEGER,
+      userId: DataTypes.STRING,
     },
     {
       sequelize,

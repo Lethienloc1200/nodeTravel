@@ -43,7 +43,12 @@ let getAllComments = (commentId) => {
 let saveDetailsInforComment = (inputData) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!inputData.commentId || !inputData.star || !inputData.description) {
+      if (
+        !inputData.commentId ||
+        !inputData.star ||
+        !inputData.description ||
+        !inputData.userId
+      ) {
         resolve({
           errCode: -1,
           errMessage: "missing parameter commentId",
@@ -53,6 +58,7 @@ let saveDetailsInforComment = (inputData) => {
           star: inputData.star,
           description: inputData.description,
           commentId: inputData.commentId,
+          userId: inputData.userId,
         });
 
         resolve({
@@ -81,7 +87,7 @@ let getDetailCommentByIdService = (inputId) => {
           include: [
             {
               model: db.Comment,
-              attributes: ["description", "star"],
+              // attributes: ["description", "star"],
             },
           ],
 
