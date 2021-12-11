@@ -20,9 +20,36 @@ let handleGetAlltours = async (req, res) => {
     tours,
   });
 };
+
+let handleGetAllBooking = async (req, res) => {
+  let id = req.query.id;
+  if (!id) {
+    return res.status(200).json({
+      errCode: 1,
+      errMessage: "Missing requires parameter",
+      bookings: [],
+    });
+  }
+
+  let bookings = await tourService.getAllBookings(id);
+
+  console.log(bookings);
+  return res.status(200).json({
+    errCode: 0,
+    errMessage: "oke",
+    bookings,
+  });
+};
 let handleCreateNewTour = async (req, res) => {
   console.log(message);
   let message = await tourService.createNewTour(req.body);
+  return res.status(200).json(message);
+};
+
+//===========create Booking
+let handleCreateNewBooking = async (req, res) => {
+  console.log(message);
+  let message = await tourService.createNewBooking(req.body);
   return res.status(200).json(message);
 };
 
@@ -76,4 +103,6 @@ module.exports = {
   handleEditTour: handleEditTour,
   getTopTourHome: getTopTourHome,
   getDetailTourById: getDetailTourById,
+  handleCreateNewBooking: handleCreateNewBooking,
+  handleGetAllBooking: handleGetAllBooking,
 };

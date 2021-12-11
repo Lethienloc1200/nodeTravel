@@ -24,6 +24,15 @@ module.exports = {
       hotel: {
         type: Sequelize.STRING,
       },
+      image1: {
+        type: Sequelize.STRING,
+      },
+      image2: {
+        type: Sequelize.STRING,
+      },
+      image3: {
+        type: Sequelize.STRING,
+      },
       contentHTML: {
         allowNull: false,
         type: Sequelize.TEXT("long"),

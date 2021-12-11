@@ -19,6 +19,9 @@ let initWebRoutes = (app) => {
   router.put("/api/edit-tour", tourController.handleEditTour);
   router.delete("/api/delete-tour", tourController.handleDeleteTour);
 
+  router.post("/api/create-new-booking", tourController.handleCreateNewBooking);
+  router.get("/api/get-all-bookings", tourController.handleGetAllBooking);
+
   router.get("/api/top-tour-home", tourController.getTopTourHome);
   router.get("/api/get-detail-tour-by-id", tourController.getDetailTourById);
 

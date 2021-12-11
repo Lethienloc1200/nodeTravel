@@ -1,6 +1,6 @@
 import res from "express/lib/response";
 import db from "../models/index";
-
+import emailService from "../services/emailService";
 let createNewTour = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -12,8 +12,42 @@ let createNewTour = (data) => {
         vehicle: data.vehicle,
         hotel: data.hotel,
         image: data.image,
+        image1: data.image1,
+        image2: data.image2,
+        image3: data.image3,
         contentHTML: data.contentHTML,
         contentMarkdown: data.contentMarkdown,
+      });
+      resolve({
+        errCode: 0,
+        message: "oke",
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+// ======BOOKING TOUR===============
+let createNewBooking = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await emailService.sendSimpleEmail({
+        name: data.name,
+        receiverEmail: data.email,
+        nameTour: data.nameTour,
+        sdt: data.sdt,
+        dayBooking: data.dayBooking,
+        note: data.note,
+      });
+
+      await db.Booking.create({
+        name: data.name,
+        sdt: data.sdt,
+        email: data.email,
+        note: data.note,
+        nameTour: data.nameTour,
+        dayBooking: data.dayBooking,
       });
       resolve({
         errCode: 0,
@@ -39,6 +73,26 @@ let getAlltours = (tourId) => {
         });
       }
       resolve(tours);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let getAllBookings = (bookingId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let booking = "";
+
+      if (bookingId === "ALL") {
+        booking = await db.Booking.findAll({});
+      }
+      if (bookingId && bookingId !== "ALL") {
+        booking = await db.Booking.findOne({
+          where: { id: bookingId },
+        });
+      }
+      resolve(booking);
     } catch (e) {
       reject(e);
     }
@@ -86,6 +140,9 @@ let updateTourData = (data) => {
         tour.vehicle = data.vehicle;
         tour.money = data.money;
         tour.hotel = data.hotel;
+        tour.image1 = data.image1;
+        tour.image2 = data.image2;
+        tour.image3 = data.image3;
         tour.contentHTML = data.contentHTML;
         tour.contentMarkdown = data.contentMarkdown;
 
@@ -169,4 +226,6 @@ module.exports = {
   updateTourData: updateTourData,
   getTopTourHomeService: getTopTourHomeService,
   getDetailTourByIdService: getDetailTourByIdService,
+  createNewBooking: createNewBooking,
+  getAllBookings: getAllBookings,
 };
