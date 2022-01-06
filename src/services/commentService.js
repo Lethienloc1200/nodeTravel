@@ -58,6 +58,11 @@ let saveDetailsInforComment = (inputData) => {
           star: inputData.star,
           description: inputData.description,
           commentId: inputData.commentId,
+          titleComment: inputData.titleComment,
+          typeOf: inputData.typeOf,
+          timeTravel: inputData.timeTravel,
+          imageComment: inputData.imageComment,
+          typeOfHotel: inputData.typeOfHotel,
           userId: inputData.userId,
         });
 
@@ -94,8 +99,10 @@ let getDetailCommentByIdService = (inputId) => {
           raw: false,
           nest: true,
         });
-        if (data && data.image) {
-          data.image = new Buffer(data.image, "base64").toString("binary");
+        if (data && data.imageComment) {
+          data.imageComment = new Buffer(data.imageComment, "base64").toString(
+            "binary"
+          );
         }
         if (!data) {
           data = {};

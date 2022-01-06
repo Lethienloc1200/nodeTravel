@@ -21,7 +21,23 @@ module.exports = {
         allowNull: true,
         type: Sequelize.INTEGER,
       },
+      imageComment: {
+        type: Sequelize.BLOB("long"),
+      },
+
       userId: {
+        type: Sequelize.STRING,
+      },
+      titleComment: {
+        type: Sequelize.STRING,
+      },
+      typeOf: {
+        type: Sequelize.STRING,
+      },
+      timeTravel: {
+        type: Sequelize.STRING,
+      },
+      typeOfHotel: {
         type: Sequelize.STRING,
       },
 

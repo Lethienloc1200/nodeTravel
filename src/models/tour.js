@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
       place: DataTypes.STRING,
       money: DataTypes.STRING,
       description: DataTypes.TEXT("long"),
+      location: DataTypes.STRING,
+      map: DataTypes.TEXT("long"),
       image1: DataTypes.STRING,
       image2: DataTypes.STRING,
       image3: DataTypes.STRING,

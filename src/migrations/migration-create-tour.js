@@ -24,6 +24,12 @@ module.exports = {
       hotel: {
         type: Sequelize.STRING,
       },
+      location: {
+        type: Sequelize.STRING,
+      },
+      map: {
+        type: Sequelize.TEXT("long"),
+      },
       image1: {
         type: Sequelize.STRING,
       },

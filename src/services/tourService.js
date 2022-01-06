@@ -11,6 +11,8 @@ let createNewTour = (data) => {
         way: data.way,
         vehicle: data.vehicle,
         hotel: data.hotel,
+        location: data.location,
+        map: data.map,
         image: data.image,
         image1: data.image1,
         image2: data.image2,
@@ -140,6 +142,8 @@ let updateTourData = (data) => {
         tour.vehicle = data.vehicle;
         tour.money = data.money;
         tour.hotel = data.hotel;
+        tour.location = data.location;
+        tour.map = data.map;
         tour.image1 = data.image1;
         tour.image2 = data.image2;
         tour.image3 = data.image3;

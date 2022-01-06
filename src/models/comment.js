@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       star: DataTypes.INTEGER,
       commentId: DataTypes.INTEGER,
       userId: DataTypes.STRING,
+      titleComment: DataTypes.STRING,
+      typeOf: DataTypes.STRING,
+      timeTravel: DataTypes.STRING,
+      imageComment: DataTypes.BLOB("long"),
+      typeOfHotel: DataTypes.STRING,
     },
     {
       sequelize,
